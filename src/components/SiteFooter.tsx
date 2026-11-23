@@ -23,7 +23,7 @@ export function SiteFooter({ onNavigate }: SiteFooterProps) {
               className="inline-flex items-center gap-3 w-fit group"
             >
               <img
-                src={BUSINESS_INFO.logoUrl}
+                src="./assets/aistudio/Logo_1_TRANSPARENT_ec4fac20.png"
                 alt="Scott's Plumbing and LSJK Septic emblem"
                 referrerPolicy="no-referrer"
                 className="w-11 h-11 object-contain shrink-0"
