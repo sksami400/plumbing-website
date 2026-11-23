@@ -1,5 +1,27 @@
 import { useState } from 'react';
 import { Wrench } from 'lucide-react';
+import heroImg from '../assets/images/hero_plumbing_craft_1795430660931.jpg';
+import septicImg from '../assets/images/septic_service_field_1795430660608.jpg';
+import waterImg from '../assets/images/water_line_excavation_1795430661256.jpg';
+import bathroomImg from '../assets/images/bathroom_fixture_detail_1795430660906.jpg';
+
+const imageMap: Record<string, string> = {
+  'hero_plumbing_craft_1795430660931.jpg': heroImg,
+  'septic_service_field_1795430660608.jpg': septicImg,
+  'water_line_excavation_1795430661256.jpg': waterImg,
+  'bathroom_fixture_detail_1795430660906.jpg': bathroomImg,
+};
+
+function resolveSrc(src: string): string {
+  if (!src) return src;
+  for (const [filename, bundledUrl] of Object.entries(imageMap)) {
+    if (src.includes(filename)) return bundledUrl;
+  }
+  if (src.startsWith('/')) {
+    return `${import.meta.env.BASE_URL}${src.slice(1)}`;
+  }
+  return src;
+}
 
 interface MediaFrameProps {
   src: string;
@@ -19,6 +41,7 @@ export function MediaFrame({
   priority = false,
 }: MediaFrameProps) {
   const [failed, setFailed] = useState(false);
+  const resolvedSrc = resolveSrc(src);
 
   return (
     <div
@@ -26,7 +49,7 @@ export function MediaFrame({
     >
       {!failed ? (
         <img
-          src={src}
+          src={resolvedSrc}
           alt={alt}
           referrerPolicy="no-referrer"
           loading={priority ? 'eager' : 'lazy'}
