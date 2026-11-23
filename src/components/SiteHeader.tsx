@@ -36,7 +36,7 @@ export function SiteHeader({ route, onNavigate }: SiteHeaderProps) {
           aria-label="Scott's Plumbing & LSJK Septic Home"
         >
           <img
-            src={BUSINESS_INFO.logoUrl}
+            src="./assets/aistudio/Logo_1_TRANSPARENT_ec4fac20.png"
             alt="Scott's Plumbing and LSJK Septic emblem"
             referrerPolicy="no-referrer"
             className="w-9 h-9 lg:w-10 lg:h-10 object-contain shrink-0"
